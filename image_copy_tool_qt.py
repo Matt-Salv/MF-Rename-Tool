@@ -329,7 +329,7 @@ class ImageTool(QMainWindow):
         )
 
         if reply == QMessageBox.Yes:
-            webbrowser.open("https://github.com/YOUR_USERNAME/YOUR_REPO/releases")
+            webbrowser.open("https://raw.githubusercontent.com/Matt-Salv/MF-Rename-Tool/main/version.txt")
 
     # ---------------- ACTIONS ----------------
     def select_excel(self):
