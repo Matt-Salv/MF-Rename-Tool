@@ -164,6 +164,20 @@ class ImageTool(QMainWindow):
         self.load_settings()
         self.convert_all_mode = False
         self.cancel_all_mode = False
+        latest = check_for_updates()
+        if latest:
+            reply = QMessageBox.question(
+                self,
+                "Update Available",
+                f"A new version ({latest}) is available.\n\n"
+                f"You are running {APP_VERSION}.\n\n"
+                "Would you like to download it?",
+                QMessageBox.Yes | QMessageBox.No
+            )
+
+        if reply == QMessageBox.Yes:
+            webbrowser.open("https://raw.githubusercontent.com/Matt-Salv/MF-Rename-Tool/main/version.txt")
+
   
     # ---------------- UI ----------------
     def _build_ui(self):
@@ -317,19 +331,6 @@ class ImageTool(QMainWindow):
 
         settings_layout.addRow("Duplicate Filename Handling", self.rename_toggle)
     # ---------------- UI END ----------------
-    latest = check_for_updates()
-    if latest:
-        reply = QMessageBox.question(
-            self,
-            "Update Available",
-            f"A new version ({latest}) is available.\n\n"
-            f"You are running {APP_VERSION}.\n\n"
-            "Would you like to download it?",
-            QMessageBox.Yes | QMessageBox.No
-        )
-
-        if reply == QMessageBox.Yes:
-            webbrowser.open("https://raw.githubusercontent.com/Matt-Salv/MF-Rename-Tool/main/version.txt")
 
     # ---------------- ACTIONS ----------------
     def select_excel(self):
